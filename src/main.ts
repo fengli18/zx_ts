@@ -10,22 +10,15 @@ import 'virtual:svg-icons-register'
 // import GlobalComponet from '@/components'
 // 引入清除默认样式
 import '@/style/style.scss'
-import axios from 'axios'
-
-axios({
-  url: '/api/user/login',
-  method: "post",
-  data: {
-    username: 'admin',
-    password: '111111'
-  }
-})
+// 注册路由
+import router from './router'
+// 注册pinia
+import pinia from './store'
 // 获取Vue实例
 const app = createApp(App)
 app.use(ElementPlus, {
   locale: zhCn,
 })
-// app.use(GlobalComponet)
+app.use(router)
+app.use(pinia)
 app.mount('#app')
-const env = import.meta.env
-console.log(env)

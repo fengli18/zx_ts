@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-view></router-view>
+    <h1>我是一级路由家</h1>
   </div>
 </template>
 
@@ -8,4 +8,6 @@
 
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped>
+
+</style>
