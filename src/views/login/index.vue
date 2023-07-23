@@ -42,33 +42,34 @@ let loginForm = reactive({
   password: '111111'
 })
 // 表单验证对象
-let rules = reactive({
-  username: [
-    {
-      required: true,
-      message: '用户名不能为空',
-      trigger: 'blur'
-    },
-    {
-      min: 3,
-      max: 6,
-      message: '用户名长度为3-6位',
-      trigger: 'blur'
-    },
-  ],
-  password: [
-    {
-      required: true,
-      message: '密码不能为空',
-      trigger: 'blur'
-    },
-    {
-      min: 6,
-      message: '用户名长度最少6位',
-      trigger: 'blur'
-    }
-  ]
-}
+let rules = reactive(
+  {
+    username: [
+      {
+        required: true,
+        message: '用户名不能为空',
+        trigger: 'blur'
+      },
+      {
+        min: 3,
+        max: 6,
+        message: '用户名长度为3-6位',
+        trigger: 'blur'
+      },
+    ],
+    password: [
+      {
+        required: true,
+        message: '密码不能为空',
+        trigger: 'blur'
+      },
+      {
+        min: 6,
+        message: '用户名长度最少6位',
+        trigger: 'blur'
+      }
+    ]
+  }
 )
 // 登录请求
 let login = async () => {
