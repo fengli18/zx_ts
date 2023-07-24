@@ -1,29 +1,23 @@
 <template>
   <div class="container">
     <!-- 左侧导航 -->
-    <div class="menu_left">
+    <div class="menu_left" :class="{ fold: useLayOut.fold ? true : false }">
       <!-- 左侧菜单的logo信息 -->
       <Logo></Logo>
       <!-- 左侧菜单的内容 -->
       <el-scrollbar class="scroller_bar">
-        <el-menu background-color="#001529" text-color="white">
-          <!-- <el-menu-item index="1">首页</el-menu-item>
-          <el-menu-item index="2">数据大屏</el-menu-item>
-          <el-sub-menu index="3">
-            <template #title>权限管理</template>
-            <el-menu-item index="3-1">用户管理</el-menu-item>
-            <el-menu-item index="3-2">角色管理</el-menu-item>
-            <el-menu-item index="3-3">菜单管理</el-menu-item>
-          </el-sub-menu> -->
-          <Menu></Menu>
+        <el-menu background-color="#001529" text-color="white" :default-active="$route.path" :collapse="useLayOut.fold">
+          <Menu :menuList="useUserStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
     </div>
     <!-- 顶部导航 -->
-    <div class="menu_top">456</div>
+    <div class="menu_top" :class="{ fold: useLayOut.fold ? true : false }">
+      <TopBar></TopBar>
+    </div>
     <!-- 中间内容 -->
-    <div class="menu_content">
-      <p style="height: 10000px;">我是一盒</p>
+    <div class="menu_content" :class="{ fold: useLayOut.fold ? true : false }">
+      <Main></Main>
     </div>
   </div>
 </template>
@@ -31,6 +25,23 @@
 <script setup lang="ts">
 import Logo from './logo/index.vue'
 import Menu from './logo/menu/index.vue'
+import userStore from '@/store/modules/user'
+import Main from './main/index.vue'
+import TopBar from './topbar/index.vue'
+// 引入当前路由对象
+import { useRoute } from 'vue-router'
+import useLayOutStore from '../store/setting'
+// 使用路由
+let $route = useRoute()
+// 用户数据仓库
+let useUserStore = userStore()
+// LayOut仓库
+let useLayOut = useLayOutStore()
+</script>
+<script lang="ts">
+export default {
+  name: 'Layout'
+}
 </script>
 
 <style scoped lang="scss">
@@ -43,10 +54,19 @@ import Menu from './logo/menu/index.vue'
     height: 100vh;
     background-color: $left-menu-bkcolor;
     color: white;
+    transition: all 0.3s;
 
     .scroller_bar {
       width: 100%;
       height: calc(100vh - $left-logo-height);
+
+      .el-menu {
+        border-right: none;
+      }
+    }
+
+    &.fold {
+      width: $left-menu-minWidth;
     }
   }
 
@@ -57,6 +77,12 @@ import Menu from './logo/menu/index.vue'
     background-color: aqua;
     top: 0;
     left: $left-menu-width;
+    transition: all 0.3s;
+
+    &.fold {
+      width: calc(100% - $left-menu-minWidth);
+      left: $left-menu-minWidth;
+    }
   }
 
   .menu_content {
@@ -67,6 +93,12 @@ import Menu from './logo/menu/index.vue'
     height: calc(100vh - $top-tabbar-height);
     overflow: auto;
     padding: 20px;
+    transition: all 0.3s;
+
+    &.fold {
+      width: calc(100% - $left-menu-minWidth);
+      left: $left-menu-minWidth;
+    }
   }
 }
 </style>

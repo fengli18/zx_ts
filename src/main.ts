@@ -14,6 +14,8 @@ import '@/style/style.scss'
 import router from './router'
 // 注册pinia
 import pinia from './store'
+// 注册ElementPlus图标
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 // 获取Vue实例
 const app = createApp(App)
 app.use(ElementPlus, {
@@ -21,4 +23,8 @@ app.use(ElementPlus, {
 })
 app.use(router)
 app.use(pinia)
+// ElementPlus图标
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
 app.mount('#app')
