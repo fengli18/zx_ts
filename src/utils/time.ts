@@ -4,7 +4,7 @@
 
 export function getTime(): string {
   let message: string = ''
-  let hours: number = new Date().getHours()
+  const hours: number = new Date().getHours()
   if (hours >= 6 && hours <= 9) {
     message = '早上好'
   } else if (hours <= 14) {

@@ -26,11 +26,12 @@ import { Lock, User } from '@element-plus/icons-vue';
 import { reactive, ref } from 'vue';
 import userStore from '@/store/modules/user'
 import { ElNotification } from 'element-plus'
-import { useRouter } from 'vue-router';
+import { useRouter,useRoute } from 'vue-router';
 import { getTime } from '@/utils/time'
 // 用户仓库
 let useStore = userStore()
-// 使用路由
+// 使用路由器和路由对象
+let $route = useRoute()
 let $router = useRouter()
 // 控制登录的加载状态
 let loading = ref(false)
@@ -87,7 +88,11 @@ let login = async () => {
       type: 'success',
       message: suc
     })
-    $router.push('/')
+    // 判断是从哪里退出的
+    let $query = $route.query.redirect as string
+    $router.push({
+      path: $query
+    })
   } catch (err) {
     loading.value = false
     ElNotification({

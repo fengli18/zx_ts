@@ -6,7 +6,12 @@
       <Logo></Logo>
       <!-- 左侧菜单的内容 -->
       <el-scrollbar class="scroller_bar">
-        <el-menu background-color="#001529" text-color="white" :default-active="$route.path" :collapse="useLayOut.fold">
+        <el-menu
+          background-color="#001529"
+          text-color="white"
+          :default-active="$route.path"
+          :collapse="useLayOut.fold"
+        >
           <Menu :menuList="useUserStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
@@ -40,7 +45,7 @@ let useLayOut = useLayOutStore()
 </script>
 <script lang="ts">
 export default {
-  name: 'Layout'
+  name: 'Layout',
 }
 </script>
 

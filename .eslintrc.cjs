@@ -36,7 +36,7 @@ module.exports = {
         'no-multiple-empty-lines': ['warn', { max: 1 }], // 不允许多个空行
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-        'no-unexpected-multiline': 'error', // 禁止空余的多行
+        'no-unexpected-multiline': 'off', // 禁止空余的多行
         'no-useless-escape': 'off', // 禁止不必要的转义字符
 
         // typeScript (https://typescript-eslint.io/rules)

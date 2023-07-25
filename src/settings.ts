@@ -3,5 +3,5 @@
  */
 export default {
   title: '硅谷甄选后台',
-  logoSrc: '/public/logo.png'
+  logoSrc: '/public/logo.png',
 }

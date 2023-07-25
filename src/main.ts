@@ -12,6 +12,8 @@ import 'virtual:svg-icons-register'
 import '@/style/style.scss'
 // 注册路由
 import router from './router'
+// 路由鉴权
+import './RouterPermission'
 // 注册pinia
 import pinia from './store'
 // 注册ElementPlus图标

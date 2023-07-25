@@ -1,11 +1,17 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia'
 
-let useLayOutStore = defineStore('LayOut', {
+const useLayOutStore = defineStore('LayOut', {
   state: () => {
     return {
-      fold: false
+      fold: false,
+      refresh: false,
     }
-  }
+  },
+  actions: {
+    changeRefresh() {
+      this.refresh = !this.refresh
+    },
+  },
 })
 
 export default useLayOutStore
