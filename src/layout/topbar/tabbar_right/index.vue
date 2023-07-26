@@ -49,9 +49,9 @@ const fullScreen = () => {
   }
 }
 // 退出登录回调
-const logout = () => {
+const logout = async () => {
   user.$reset()
-  user.logOut()
+  await user.logOut()
   $router.push({
     path: '/login',
     query: {

@@ -26,8 +26,9 @@ import { Lock, User } from '@element-plus/icons-vue';
 import { reactive, ref } from 'vue';
 import userStore from '@/store/modules/user'
 import { ElNotification } from 'element-plus'
-import { useRouter,useRoute } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import { getTime } from '@/utils/time'
+import type { loginForm } from '@/api/user/type';
 // 用户仓库
 let useStore = userStore()
 // 使用路由器和路由对象
@@ -38,9 +39,9 @@ let loading = ref(false)
 // 获取表单ref
 let loginForms = ref()
 // 登录表单信息
-let loginForm = reactive({
+let loginForm = reactive<loginForm>({
   username: 'admin',
-  password: '111111'
+  password: 'atguigu123'
 })
 // 表单验证对象
 let rules = reactive(
@@ -90,9 +91,15 @@ let login = async () => {
     })
     // 判断是从哪里退出的
     let $query = $route.query.redirect as string
-    $router.push({
-      path: $query
-    })
+    if ($query) {
+      $router.push({
+        path: $query
+      })
+    } else {
+      $router.push({
+        path: '/home'
+      })
+    }
   } catch (err) {
     loading.value = false
     ElNotification({
