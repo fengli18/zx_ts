@@ -1,5 +1,5 @@
 <template>
-  <RouterView v-slot="{Component}">
+  <RouterView v-slot="{ Component }">
     <Transition name="fade">
       <component :is="Component" v-if="flag"></component>
     </Transition>
@@ -20,7 +20,7 @@ watch(
     nextTick(() => {
       flag.value = true
     })
-  }
+  },
 )
 </script>
 <script lang="ts">

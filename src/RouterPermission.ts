@@ -6,7 +6,7 @@ import userStore from './store/modules/user'
 import settings from './settings'
 import { ElNotification } from 'element-plus'
 
-let user = userStore(pinia)
+const user = userStore(pinia)
 nprogress.configure({ showSpinner: false })
 // 全局前置守卫
 router.beforeEach(async (to, from, next) => {
