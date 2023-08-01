@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
-import { ResponseData, loginForm, userInfoDataType } from '@/api/user/type'
+import { ResponseData } from '@/api/common'
+import { loginForm, userInfoDataType } from '@/api/user/type'
 import { reqLogin, reqUserInfo, reqLogOut } from '@/api/user'
 import type { userState } from './types/type'
 import { SET_TOKEN, GET_TOKEN, DEL_TOKEN } from '@/utils/token'
@@ -11,13 +12,13 @@ const userStore = defineStore('User', {
       token: GET_TOKEN(),
       menuRoutes: routerInfo, // 仓库存储生成菜单
       username: '',
-      avatar: ''
+      avatar: '',
     }
   },
   actions: {
     // 用户登录方法
     async userLogin(data: loginForm) {
-      const result:ResponseData<string> = await reqLogin(data)
+      const result: ResponseData<string> = await reqLogin(data)
       if (result.code == 200) {
         this.token = result.data as string
         SET_TOKEN(result.data as string)
@@ -28,7 +29,7 @@ const userStore = defineStore('User', {
     },
     // 获取用户信息
     async userInfo() {
-      let res:ResponseData<userInfoDataType> = await reqUserInfo()
+      let res: ResponseData<userInfoDataType> = await reqUserInfo()
       // console.log(res)
       if (res.code === 200) {
         this.username = res.data.name
@@ -48,13 +49,13 @@ const userStore = defineStore('User', {
         DEL_TOKEN()
         ElNotification({
           type: 'success',
-          message: '退出登录成功'
+          message: '退出登录成功',
         })
         return 'ok'
       } else {
         return Promise.reject(new Error(result.message))
       }
-    }
+    },
   },
   getters: {},
 })
