@@ -20,7 +20,7 @@ export default defineConfig(({ command, mode }) => {
       viteMockServe({
         mockPath: './src/mock',
         localEnabled: command === 'serve',
-      })
+      }),
     ],
     resolve: {
       alias: {
@@ -43,8 +43,8 @@ export default defineConfig(({ command, mode }) => {
           target: env.VITE_SERVER,
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ''),
-        }
-      }
-    }
+        },
+      },
+    },
   }
 })

@@ -7,18 +7,19 @@ export type AttrDataType = {
 }
 
 // 属性的返回值类型
-type ArrtValue = {
-  id: number
+export type ArrtValue = {
+  id?: number
   valueName: string
-  attrId: number
+  attrId?: number
+  flag?: boolean
 }
 // 每个属性值数组的类型
 type AttrValueList = ArrtValue[]
 // 定义Attr数据的返回类型
 export type Attrs = {
-  id: number
+  id?: number
   attrName: string
-  categoryId: number
+  categoryId: number | string
   categoryLevel: number
   attrValueList: AttrValueList
 }
