@@ -22,6 +22,7 @@
           align="center"
           prop="attrName"
         ></el-table-column>
+        <!-- 哈哈哈 -->
         <el-table-column label="属性值名称" align="center">
           <template #default="{ row }">
             <el-tag
@@ -40,7 +41,7 @@
               type="primary"
               @click="updateAttr(row)"
             ></el-button>
-            <!--删除按钮-->
+            <!-- 删除按钮 -->
             <el-popconfirm
               :title="`你确定要删除${row.attrName}吗?`"
               @confirm="removeAttr(row)"
